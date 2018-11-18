@@ -1,0 +1,14 @@
+{
+  "name": "sens-critique-youtube-plugin",
+  "version": "1.0.0",
+  "description": "A small helper to listen to some SensCritique stuff super easy/fast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jean Duthon",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.15.2"
+  }
+}
