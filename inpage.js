@@ -1,4 +1,4 @@
-const API_KEY = 'YOUR_API_KEY_HERE';
+const API_KEY = 'YOUR_API_KEY';
 
 const albumsHTML = [...document.getElementsByClassName('elco-collection-item')];
 
@@ -59,7 +59,7 @@ const buildGetParams = (url, params) => {
 };
 
 const get = (url, params) =>
-  fetch(buildGetParams(url, params)).then(result => result.json());
+  promisedSendMessage({ type: 'fetch', url: buildGetParams(url, params) });
 
 const transformYoutubeItem = ({ id, ...rest }) => {
   const newProps = {};
@@ -90,6 +90,9 @@ const albumMatches = album => name => {
 
 const youtubeSearch = q =>
   get(youtubeApiSearchUrl, { q, key: API_KEY, part: 'snippet' });
+
+const promisedSendMessage = payload =>
+  new Promise(resolve => chrome.runtime.sendMessage(payload, resolve));
 
 const youtubeSearchAndEmbed = (album, node) =>
   youtubeSearch(getYoutubeQuery(album))
